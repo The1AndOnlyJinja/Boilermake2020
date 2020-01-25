@@ -17,21 +17,31 @@ public class FillerStats {
     }
     
     public void removeFiller (long wordTime) {
+        //remove filler word from the lists
         int timeIndex = this.fillerTime.indexOf(wordTime);
         if (timeIndex == -1) {
-            system.out.print("No filler word at the specified time.");
+            system.out.print("No filler word at the specified time.\n");
             return;
         } else {
             this.fillerWords.remove(timeIndex);
             this.fillerTime.remove(timeIndex);
-            system.out.printf("Filler word at time " + wordTime + " removed.");
+            system.out.printf("Filler word at time " + wordTime + " removed.\n");
             return;
+        }
+    }
+    
+    public long getTimeAtIndex (int index) {
+        //get the specified time at the index
+        if (index >= this.fillerTime.size() || index < 0) {
+            system.out.print("Index is not within list bounds.\n");
+            return -1;
+        } else {
+            return this.fillerTime.get(index);
         }
     }
     
     public void printFillers() {
         //call after a recording session is done
-        
         String firstWord = this.fillerWords.peekFirst();
         if (firstWord == NULL) {
             system.out.print("Good job! No filler words were said.\n");
