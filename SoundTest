@@ -1,0 +1,54 @@
+
+public class Soundtest {
+    boolean r = false;
+    public void test() {
+        JavaSoundRecorder hymns = new JavaSoundRecorder();
+        Thread another_try = new Thread(new Runnable() {
+            public void run() {
+              hymns.record();
+              try {
+                wait();
+              }
+              catch (Exception e) {
+    //
+              }
+              while (true) {
+                if (r = false) {
+                   hymns.stop_record();
+                   return;
+                 }
+               }
+             }
+           });
+
+        Thread try_this = new Thread(new Runnable() {
+            public void run() {
+            try {
+              another_try.wait();
+            }
+            catch (Exception e) {
+              //
+            }
+              for (int i = 0; i < 100000; i++) {
+                  System.out.println("soundtest still going\n");
+               }
+               System.out.println("gonna stop now");
+               r = false;
+               try {
+                  notifyAll();
+               }
+               catch (Exception e) {
+//
+               }
+             }
+           });
+      this.r = true;
+      try_this.start();
+      another_try.start();
+
+    }
+    public static void main(String args[]) {
+      Soundtest lets_get_it = new Soundtest();
+      lets_get_it.test();
+    }
+}
