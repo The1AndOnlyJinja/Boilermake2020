@@ -12,15 +12,22 @@ public class JavaSoundRecorder {
     // path of the wav file
     String file_path = "noise/"; //Textbox input + /
     File wavFile = new File(file_path);
-    //if (wavFile.exists()) {
-     //ask if they want to override
-    //} 
+    boolean recording = false;
 .
     // format of audio file
     AudioFileFormat.Type fileType = AudioFileFormat.Type.WAVE;
 .
     // the line from which audio data is captured
     TargetDataLine line;
+     JavaSoundRecorder(String file_name) {
+        this.wavFile = new File(file_name);
+        if (wavFile.exists()) {
+            //Ask if they want to override
+        }
+     }   
+     JavaSoundRecorder() {
+        //
+     }   
 .
     /** 
      * Defines an audio format
@@ -33,11 +40,4 @@ public class JavaSoundRecorder {
         boolean bigEndian = true;
         AudioFormat format = new AudioFormat(sampleRate, sampleSizeInBits,
                                              channels, signed, bigEndian);
-        return format;
-    }   
-.
-    /** 
-     * Captures the sound and record into a WAV file
-     */
-    void start() {
-:set nonumber                                                 1,1           Top
+:set nonumber                                                 1,7           Top
